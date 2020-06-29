@@ -51,7 +51,7 @@ export const PostItem = (item) => {
             <div className={highlightedStyle}>
                 <span>{handleHightlight(item.publication_plan)}</span>
                 <div className={favoriteStyle} onClick={()=>handleFavorites(item.posting_id)}>
-                    {validateFavorites(item.posting_id) ? <i className="material-icons">favorite_border</i> : <i className="material-icons">favorite</i>}
+                    {validateFavorites(item.posting_id) ? <i className="material-icons">favorite_border</i> : <i className={`material-icons ${favoriteSelectedStyle}`}>favorite</i>}
                 </div>
             </div>
             <div className={galleryStyle}><img src={item.posting_picture}/></div>
@@ -169,4 +169,8 @@ const subtitleStyle = css({
     marginBottom:'30px',
     fontWeight:500,
     fontSize:'14px'
+})
+
+const favoriteSelectedStyle = css({
+    color:"red"
 })
