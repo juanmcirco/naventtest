@@ -17,16 +17,20 @@ export const Radiofilter = () => {
         }
     }
     
-    // const validateChecked = (pos) => {
-    //     const validateCheckedPosition = CurrentContext.filter(function(type) {
-    //         return type.operation_type.operation_type_id === parseInt(pos)
-    //     })
+    const validateChecked = (pos) => {
+        const validateCheckedPosition = CurrentContext.filter(function(type) {
+            return type.operation_type.operation_type_id === parseInt(pos)
+        })
 
-    //     return validateCheckedPosition[0] ? validateCheckedPosition[0].operation_type.operation_type_id : false
-    // }
+        return validateCheckedPosition[0] ? validateCheckedPosition[0].operation_type.operation_type_id : false
+    }
 
     const handleChange = (evt) => {
         setContextData(filteredPost(evt.target.value))
+    }
+
+    const handleClick = (value) => {
+        setContextData(filteredPost(value))
     }
 
     const handleClickHideFilter = () => {
@@ -36,29 +40,31 @@ export const Radiofilter = () => {
     return <div className={filterContainerStyle}>
                 <div className={titleStyle} onClick={handleClickHideFilter}>
                     <span>Tipo de operación</span>
-                    <span><i class="material-icons">{!hideFilter ? "keyboard_arrow_up" : "keyboard_arrow_down"}</i></span>
+                    <span><i className="material-icons">{!hideFilter ? "keyboard_arrow_up" : "keyboard_arrow_down"}</i></span>
                 </div>
                 {!hideFilter &&
                 <form >
-                    <div>{OriginalContext.map((radio, i) => 
+                    <div className={radioItemStyle}>{OriginalContext.map((radio, i) => 
                         <div key={i}>
                             <input
                                 type="radio"
                                 name="radioFilter"
                                 onChange={handleChange}
                                 value={radio.operation_type.operation_type_id}
-                                //checked={validateChecked(radio.operation_type.operation_type_id)}
+                                checked={validateChecked(radio.operation_type.operation_type_id)}
                             />
-                            <label htmlFor="radioFilter">{radio.operation_type.operation_type_name}</label>
+                            <label htmlFor="radioFilter" onClick={() => handleClick(radio.operation_type.operation_type_id)}>{radio.operation_type.operation_type_name}</label>
                         </div>)}
-                        <input
-                                type="radio"
-                                name="radioFilter"
-                                onChange={handleChange}
-                                value={""}
-                                checked={OriginalContext === CurrentContext}
-                            />
-                            <label htmlFor="radioFilter">Todos</label>
+                        <div>
+                            <input
+                                    type="radio"
+                                    name="radioFilter"
+                                    onChange={handleChange}
+                                    value={0}
+                                    checked={OriginalContext === CurrentContext}
+                                />
+                                <label htmlFor="radioFilter" onClick={() => handleClick(0)}>Todos</label>
+                        </div>
 
                     </div>
                     </form>}
@@ -79,6 +85,16 @@ const filterContainerStyle = css({
     'label':{ 
         fontSize: '12px',
         lineHeight: '24px',
-        verticalAlign: 'middle'
+        verticalAlign: 'middle',
+        display: 'inline-block',
+        width: '80%'
+    }
+})
+
+const radioItemStyle = css({
+    '>div:hover':{
+        transition: 'background .5s ease',
+        background:'#f5f5f5',
+        borderRadius:"4px" 
     }
 })

@@ -36,7 +36,7 @@ export const SearchFilter = () => {
     return <div className={filterContainerStyle}>
         <div className={titleStyle} onClick={handleClickHideFilter}>
             <span>Dirección</span>
-            <span><i class="material-icons">{!hideFilter ? "keyboard_arrow_up" : "keyboard_arrow_down"}</i></span>
+            <span><i className="material-icons">{!hideFilter ? "keyboard_arrow_up" : "keyboard_arrow_down"}</i></span>
         </div>
         {!hideFilter &&
         <form onSubmit={handleSubmit} className={filterContainerStyleForm}>
@@ -96,6 +96,5 @@ const searchBoxInput = css({
     boxShadow:" 0px 0px 4px -1px #ccc",
     '::-webkit-input-placeholder':{
         fontSize: '12px'
-    },
-    
+    }
 })
