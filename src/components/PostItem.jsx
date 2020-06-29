@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {Pricebox} from './PriceBox'
-import { Link } from 'react-router-dom'
 import { DateFormat } from './DateFormat'
 import { css } from 'emotion'
+import FormDialog from './Subcribe'
 
 export const PostItem = (item) => {
     const [fav, setFavs] = useState(JSON.parse(localStorage.getItem('favoriteItems'))||[])
@@ -63,7 +63,8 @@ export const PostItem = (item) => {
             <p>{item.posting_description}</p>
             <div className={miniFooterStyle}>
                 <DateFormat date={item.publish_date}/>
-                <Link to={item.posting_slug} className={contactStyle}>Contactar</Link>
+                
+                <FormDialog url="item.posting_slug"/>
             </div>
         </div>
     </div>
@@ -140,23 +141,6 @@ const miniFooterStyle = css({
     height: '40px',
     marginBottom:10,
     alignItems: 'center'
-})
-
-const contactStyle = css({
-    color:'white',
-    background:'#E68444',
-    borderRadius:'5px',
-    textDecoration:'none',
-    cursor:'pointer',
-    height:'38px',
-    lineHeight: '38px',
-    width: '100px',
-    textAlign: 'center',
-    fontWeight:600,
-    transition: 'background 1s ease',
-    ':hover':{
-        background:'#fca267'
-    }
 })
 
 const titleStyle = css({
