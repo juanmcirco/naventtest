@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Pricebox} from './PriceBox'
 import { Link } from 'react-router-dom'
 import { DateFormat } from './DateFormat'
 import { css } from 'emotion'
 
 export const PostItem = (item) => {
-
+    const [fav, setFavs] = useState(JSON.parse(localStorage.getItem('favoriteItems'))||[])
     const handleHightlight = (value) =>{
         let destacado = ""
         switch (value) {
@@ -21,11 +21,38 @@ export const PostItem = (item) => {
         return destacado
     }
 
+    const handleFavorites = (posting_id) =>{
+        const localFavorites = JSON.parse(localStorage.getItem('favoriteItems'))
+        const favorites = posting_id
+        if(!fav.includes(favorites)){
+            setFavs(localFavorites.concat(favorites))
+        }else{
+            const posToDelete= localFavorites.findIndex(val => val === posting_id)
+            const formatedFavorites = [...localFavorites]
+            formatedFavorites.splice(posToDelete,1)
+            setFavs(formatedFavorites)
+        }
+    }
+    
+    const validateFavorites = (posting_id) =>{
+        if(!fav.includes(posting_id)){
+            return true
+        }else{
+            return false
+        }
+    }
+
+    useEffect(() => {
+        localStorage.setItem('favoriteItems', JSON.stringify(fav))
+      });
+
     return <div className={postContainerStyle(item.publication_plan)}>
         <div className={firstColumnStyle}>
             <div className={highlightedStyle}>
                 <span>{handleHightlight(item.publication_plan)}</span>
-                <div className={favoriteStyle}><i className="material-icons">favorite_border</i></div>
+                <div className={favoriteStyle} onClick={()=>handleFavorites(item.posting_id)}>
+                    {validateFavorites(item.posting_id) ? <i className="material-icons">favorite_border</i> : <i className="material-icons">favorite</i>}
+                </div>
             </div>
             <div className={galleryStyle}><img src={item.posting_picture}/></div>
             <Pricebox prices={item.posting_prices}/>
