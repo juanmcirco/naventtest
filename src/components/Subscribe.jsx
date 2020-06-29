@@ -7,7 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import { css } from 'emotion'
 
-export default function FormDialog({url}) {
+export default function Subscribe({url}) {
     const [open, setOpen] = React.useState(false)
     const [error, setValidate] = React.useState(false)
 
@@ -82,18 +82,18 @@ export default function FormDialog({url}) {
 }
 
 const contactStyle = css({
-color:'white !important',
-background:'#E68444!important',
-borderRadius:'5px!important',
-textDecoration:'none!important',
-cursor:'pointer!important',
-height:'38px!important',
-lineHeight: '38px!important',
-minWidth: '100px!important',
-textAlign: 'center!important',
-fontWeight:600,
-transition: 'background 1s ease!important',
-':hover':{
-background:'#fca267!important'
-}
+    color:'white !important',
+    background:'#E68444!important',
+    borderRadius:'5px!important',
+    textDecoration:'none!important',
+    cursor:'pointer!important',
+    height:'38px!important',
+    lineHeight: '38px!important',
+    minWidth: '100px!important',
+    textAlign: 'center!important',
+    fontWeight:600,
+    transition: 'background 1s ease!important',
+    ':hover':{
+        background:'#fca267!important'
+    }
 })

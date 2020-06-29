@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Pricebox} from './PriceBox'
 import { DateFormat } from './DateFormat'
 import { css } from 'emotion'
-import FormDialog from './Subcribe'
+import Subscribe from './Subscribe'
 
 export const PostItem = (item) => {
     const [fav, setFavs] = useState(JSON.parse(localStorage.getItem('favoriteItems'))||[])
@@ -63,8 +63,7 @@ export const PostItem = (item) => {
             <p>{item.posting_description}</p>
             <div className={miniFooterStyle}>
                 <DateFormat date={item.publish_date}/>
-                
-                <FormDialog url="item.posting_slug"/>
+                <Subscribe url="item.posting_slug"/>
             </div>
         </div>
     </div>
