@@ -60,9 +60,13 @@ export default function FormDialog({url}) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} className={contactStyle} fullWidth>
-            Contactar Anunciante
-          </Button>
+            {error? <Button fullWidth>
+                Contactar Anunciante
+            </Button>:
+            <Button onClick={handleClose} className={contactStyle} fullWidth>
+                Contactar Anunciante
+            </Button>
+            }
         </DialogActions>
       </Dialog>
     </div>
