@@ -16,7 +16,12 @@ const homeStyle = css({
     maxWidth: '80vw',
     margin: 'auto',
     paddingTop: '50px',
-    fontFamily: "'Roboto', sans-serif"
+    fontFamily: "'Roboto', sans-serif",
+    '@media (max-width: 460px)' :{
+        flexDirection: 'column',
+        maxWidth: '100vw',
+        paddingTop: '10px',
+    }
 })
 
 

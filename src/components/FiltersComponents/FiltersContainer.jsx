@@ -22,5 +22,13 @@ const filtersContainerStyle = css({
         paddingBottom:'10px',
         borderBottom: '1px solid #E7E7E7',
         ':last-child':{borderBottom: '0px solid #E7E7E7'}
+    },
+    '@media (max-width: 460px)' :{
+        minWidth: "auto",
+        width: '85%',
+        marginBottom: '10px',
+        '& > div, h4': {
+            width: '100%'
+        },
     }
 })

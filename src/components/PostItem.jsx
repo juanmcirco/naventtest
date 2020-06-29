@@ -78,7 +78,13 @@ const firstColumnStyle = css({
 
 const galleryStyle =css({
     height:'180px',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    '@media (max-width: 460px)' :{
+        width:'100%',
+        'img':{
+            width:'100%',
+        }
+    }
 })
 
 const highlightedStyle = css({
@@ -119,6 +125,11 @@ const postContainerStyle =(value)=> {
         marginBottom: '10px',
         display: 'flex',
         flexDirection:'row',
+        '@media (max-width: 460px)' :{
+            flexDirection: 'column',
+            maxWidth: '100%',
+            paddingTop: '10px',
+        }
     })
 }
 

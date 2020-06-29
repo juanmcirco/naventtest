@@ -30,7 +30,10 @@ function App() {
 const appStyle = css({
   margin: '0',
   padding: '0',
-  backgroundColor: '#F0F0F0'
+  backgroundColor: '#F0F0F0',
+  '@media (max-width: 460px)' :{
+    margin:'20px'
+  }
 })
 
 export default App;
