@@ -6,7 +6,7 @@ export const Posts = ({}) => {
     const { CurrentContext } = useContext(Context)
     const Postings = CurrentContext
 
-    return <>
+    return <div>
         {Postings && Postings.map((post,i)=><PostItem {...post} key={i}/>)}
-    </>
+    </div>
 }

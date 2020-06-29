@@ -5,13 +5,13 @@ import {
   Route
 } from "react-router-dom";
 import {StaticContext} from './context/StaticContext'
-
 import Home from './components/Home'
+import { css } from 'emotion'
 
 function App() {
   return (
     <StaticContext>
-      <div className="App">
+      <div className={appStyle}>
         <Suspense fallback={null}>
           <section className="App-content"></section>
           <Router> 
@@ -26,5 +26,11 @@ function App() {
     </StaticContext>
   );
 }
+
+const appStyle = css({
+  margin: '0',
+  padding: '0',
+  backgroundColor: '#F0F0F0'
+})
 
 export default App;
