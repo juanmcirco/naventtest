@@ -7,7 +7,11 @@ export function StaticContext ({children}) {
   const [CurrentContext, setContextData] = useState(MockedData)
   const OriginalContext = MockedData
 
-  return <Context.Provider value={{OriginalContext, CurrentContext, setContextData}}>
+  const themeColors = {
+    gray: "#333"
+  }
+
+  return <Context.Provider value={{OriginalContext, CurrentContext, setContextData, themeColors}}>
     {children}
   </Context.Provider>
 }

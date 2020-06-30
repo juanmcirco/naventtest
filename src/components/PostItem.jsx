@@ -6,19 +6,13 @@ import Subscribe from './Subscribe'
 
 export const PostItem = (item) => {
     const [fav, setFavs] = useState(JSON.parse(localStorage.getItem('favoriteItems'))||[])
-    const handleHightlight = (value) =>{
-        let destacado = ""
-        switch (value) {
-            case "SUPERHIGHLIGHTED":
-                destacado="Super destacado"
-                break;
-            case "HIGHLIGHTED":
-                destacado="Destacado"
-                break;
-            default:
-                break;
+    const handleHightlight = (value) => {
+        if (value === 'SUPERHIGHLIGHTED') {
+            return 'Super destacado';
+        } else if (value === 'HIGHLIGHTED') {
+            return 'Destacado';
         }
-        return destacado
+        return '';
     }
 
     const handleFavorites = (posting_id) =>{
@@ -116,6 +110,7 @@ const postContainerStyle =(value)=> {
         default:
             break;
     }
+    
     return css({
         border:'1px solid #ccc',
         borderTop: `4px solid ${highlight}`,

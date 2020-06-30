@@ -7,9 +7,7 @@ export const Radiofilter = () => {
     const [hideFilter, setHide ] = useState(false)
 
     const filteredPost = (search) => {
-        const filtrados = OriginalContext.filter(function(type) {
-            return type.operation_type.operation_type_id === parseInt(search)
-        })
+        const filtrados = OriginalContext.filter((type) => type.operation_type.operation_type_id === parseInt(search))
         if(filtrados.length == 0 || !search){
             return OriginalContext
         }else{
@@ -18,10 +16,7 @@ export const Radiofilter = () => {
     }
     
     const validateChecked = (pos) => {
-        const validateCheckedPosition = CurrentContext.filter(function(type) {
-            return type.operation_type.operation_type_id === parseInt(pos)
-        })
-
+        const validateCheckedPosition = CurrentContext.filter((type)=>{return type.operation_type.operation_type_id === parseInt(pos)})
         return validateCheckedPosition[0] ? validateCheckedPosition[0].operation_type.operation_type_id : false
     }
 
@@ -45,7 +40,7 @@ export const Radiofilter = () => {
                 {!hideFilter &&
                 <form >
                     <div className={radioItemStyle}>{OriginalContext.map((radio, i) => 
-                        <div key={i}>
+                        <div key={`radioFilter${i}`}>
                             <input
                                 type="radio"
                                 name="radioFilter"

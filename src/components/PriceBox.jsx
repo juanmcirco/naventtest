@@ -16,7 +16,7 @@ export const Pricebox = ({prices}) => {
     return(
         <div className={priceboxContainerStyle}>
             {prices.map((price, i)=> 
-                <div key={i} className={priceBoxStyle}>
+                <div key={`price${i}`} className={priceBoxStyle}>
                     <div className={principalPrice}>
                         {translateCurrency(price.price)}
                     </div>

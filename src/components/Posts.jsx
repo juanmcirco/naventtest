@@ -7,6 +7,6 @@ export const Posts = ({}) => {
     const Postings = CurrentContext
 
     return <div>
-        {Postings && Postings.map((post,i)=><PostItem {...post} key={i}/>)}
+        {Postings && Postings.map((post,i)=><PostItem {...post} key={`postItem${i}`}/>)}
     </div>
 }
