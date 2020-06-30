@@ -3,7 +3,7 @@ import { Posts } from './Posts'
 import { FiltersContainer } from './FiltersComponents/FiltersContainer'
 import { css } from 'emotion'
 
-function Home() {
+const Home = () => {
     return <div className={homeStyle}>
         <FiltersContainer/>
         <Posts />

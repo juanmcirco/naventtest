@@ -7,15 +7,15 @@ export const SearchFilter = () => {
     const [hideFilter, setHide ] = useState(false)
     
     const filteredPost = (search) => {
-        const filtrados = OriginalContext.filter(function(adresses) {
+        const filtrados = OriginalContext.filter((adresses) =>{
             return adresses.posting_location.address.toLowerCase().includes(search.toLowerCase())
         })
-        if(filtrados.length == 0 || !search){
-            return OriginalContext
-        }else{
+        if (filtrados.length) {
             return filtrados
         }
+        return OriginalContext
     }
+
 
     const handleSubmit = (evt)=>{
         evt.preventDefault()
@@ -24,7 +24,7 @@ export const SearchFilter = () => {
     
     const handleChange = (evt) => {
         setKeyword( evt.target.value )
-        if(evt.target.value === ""){
+        if(evt.target.value === ''){
             setContextData(OriginalContext)
         }
     }
@@ -41,7 +41,7 @@ export const SearchFilter = () => {
         {!hideFilter &&
         <form onSubmit={handleSubmit} className={filterContainerStyleForm}>
             <input
-                placeholder="buscar por direccion.."
+                placeholder="buscar por dirección..."
                 type="text"
                 onChange={handleChange}
                 value={keyword}

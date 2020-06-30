@@ -1,10 +1,10 @@
-import React,{ Suspense } from 'react';
+import React, { Suspense } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
-import {StaticContext} from './context/StaticContext'
+import { StaticContext } from './context/StaticContext'
 import Home from './components/Home'
 import { css } from 'emotion'
 
